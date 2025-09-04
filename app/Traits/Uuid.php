@@ -10,18 +10,18 @@ trait Uuid
     {
         parent::boot();
         static::creating(function ($model) {
-            if ($model->getKey() === null) {
-                $model->getAttribute($model->getKeyName(), Str::uuid()->toString());
+            if (!$model->getKey()) {
+                $model->setAttribute($model->getKeyName(), Str::uuid());
             }
         });
     }
 
-    public function getIncrementing()
+    public function getIncrementing(): bool
     {
         return false;
     }
 
-    public function getKeyType()
+    public function getKeyType(): string
     {
         return 'string';
     }

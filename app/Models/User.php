@@ -51,6 +51,13 @@ class User extends Authenticatable
         ];
     }
 
+    public function scopeSearch($query, $search)
+    {
+        return $query
+            ->where('name', 'like', "%{$search}%")
+            ->orWhere('email', 'like', "%{$search}%");
+    }
+
     public function headOfFamily(): HasOne
     {
         return $this->hasOne(HeadOfFamily::class);
