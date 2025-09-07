@@ -12,6 +12,14 @@ class HeadOfFamily extends Model
 {
     use SoftDeletes, Uuid;
 
+    public function scopeSearch($query, $search)
+    {
+        return $query->whereHas('user', function ($query) use ($search) {
+            $query->where('name', 'like', '%' . $search . '%')
+            ->orWhere('email', 'like', '%' . $search . '%');
+        })->orWhere('identity_number', 'like', '%' . $search . '%');
+    }
+
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
