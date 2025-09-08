@@ -25,7 +25,7 @@ class UserUpdateRequest extends FormRequest
     {
         return [
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', Rule::unique(User::class)->ignore($this->user)],
+            'email' => ['required', 'string', 'email', 'max:255',Rule::unique(User::class)->ignore($this->user)],
             'password' => ['nullable', 'string', 'min:8'],
         ];
     }
@@ -36,18 +36,6 @@ class UserUpdateRequest extends FormRequest
             'name' => 'Name',
             'email' => 'Email',
             'password' => 'Password',
-        ];
-    }
-
-    public function messages(): array
-    {
-        return [
-            'required' => ':attribute is required',
-            'string' => ':attribute must be a string',
-            'max' => ':attribute must be at most :max characters',
-            'min' => ':attribute must be at least :min characters',
-            'unique' => ':attribute already exists',
-            'email' => ':attribute must be a valid email address',
         ];
     }
 }

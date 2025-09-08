@@ -2,7 +2,6 @@
 
 namespace App\Http\Requests;
 
-use App\Models\User;
 use Illuminate\Foundation\Http\FormRequest;
 
 class UserStoreRequest extends FormRequest
@@ -24,7 +23,7 @@ class UserStoreRequest extends FormRequest
     {
         return [
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:' . User::class],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8'],
         ];
     }
@@ -38,15 +37,5 @@ class UserStoreRequest extends FormRequest
         ];
     }
 
-    public function messages(): array
-    {
-        return [
-            'required' => ':attribute is required',
-            'string' => ':attribute must be a string',
-            'max' => ':attribute must be at most :max characters',
-            'min' => ':attribute must be at least :min characters',
-            'unique' => ':attribute already exists',
-            'email' => ':attribute must be a valid email address',
-        ];
-    }
+
 }
