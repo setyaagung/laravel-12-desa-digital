@@ -25,7 +25,7 @@ class FamilyMemberController extends Controller
     {
         try {
             $familyMembers = $this->familyMemberRepository->getAllFamilyMembers(
-                $request->search,
+                $request->search ?? null,
                 $request->limit,
                 true
             );

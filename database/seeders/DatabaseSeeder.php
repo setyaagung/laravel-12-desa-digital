@@ -6,6 +6,7 @@ use App\Models\FamilyMember;
 use App\Models\User;
 use Database\Factories\FamilyMemberFactory;
 use Database\Factories\HeadOfFamilyFactory;
+use Database\Factories\SocialAssistanceFactory;
 use Database\Factories\UserFactory;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -27,6 +28,8 @@ class DatabaseSeeder extends Seeder
                 'user_id' => UserFactory::new()->create()->id
             ]);
         });
+
+        SocialAssistanceFactory::new()->count(50)->create();
 
         //User::factory()->create([
         //    'name' => 'Test User',

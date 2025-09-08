@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('social_assistances', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->string('thumbnail')->nullable();
+            $table->string('thumbnail');
             $table->string('name');
             $table->enum('category', ['staple', 'cash', 'subsidized_fuel', 'health']);
             $table->integer('amount');
