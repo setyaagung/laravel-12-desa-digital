@@ -31,7 +31,8 @@ class HeadOfFamilyStoreRequest extends FormRequest
             'date_of_birth' => ['required','date'],
             'phone_number' => ['required','unique:head_of_families','string','max:255'],
             'occupation' => ['required','string','max:255'],
-            'marital_status' => ['required','string','max:255','in:single,married']
+            'marital_status' => ['required','string','max:255','in:single,married'],
+            'religion' => ['required','string','max:255','in:islam,christianity,hinduism,buddhism']
         ];
     }
 
@@ -47,7 +48,8 @@ class HeadOfFamilyStoreRequest extends FormRequest
             'date_of_birth' => 'Date of Birth',
             'phone_number' => 'Phone Number',
             'occupation' => 'Occupation',
-            'marital_status' => 'Marital Status'
+            'marital_status' => 'Marital Status',
+            'religion' => 'Religion'
         ];
     }
 }

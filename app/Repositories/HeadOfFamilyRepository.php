@@ -59,6 +59,7 @@ class HeadOfFamilyRepository implements HeadOfFamilyRepositoryInterface
             $headOfFamily->phone_number = $data['phone_number'];
             $headOfFamily->occupation = $data['occupation'];
             $headOfFamily->marital_status = $data['marital_status'];
+            $headOfFamily->religion = $data['religion'];
             $headOfFamily->save();
 
             DB::commit();
@@ -96,6 +97,7 @@ class HeadOfFamilyRepository implements HeadOfFamilyRepositoryInterface
             $headOfFamily->phone_number = $data['phone_number'];
             $headOfFamily->occupation = $data['occupation'];
             $headOfFamily->marital_status = $data['marital_status'];
+            $headOfFamily->religion = $data['religion'];
             $headOfFamily->save();
 
             $userRepository = new UserRespository();

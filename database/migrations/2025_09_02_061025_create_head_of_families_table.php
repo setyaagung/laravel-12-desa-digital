@@ -14,13 +14,14 @@ return new class extends Migration
         Schema::create('head_of_families', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->foreignUuid('user_id')->constrained()->cascadeOnDelete();
-            $table->string('profile_picture')->nullable();
+            $table->string('profile_picture');
             $table->string('identity_number')->unique();
             $table->enum('gender', ['male', 'female']);
             $table->date('date_of_birth');
             $table->string('phone_number')->unique();
             $table->string('occupation');
             $table->enum('marital_status', ['single', 'married']);
+            $table->string('religion');
             $table->timestamps();
             $table->softDeletes();
         });
