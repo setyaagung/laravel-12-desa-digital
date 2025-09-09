@@ -3,6 +3,9 @@
 namespace Database\Seeders;
 
 use App\Models\FamilyMember;
+use App\Models\HeadOfFamily;
+use App\Models\SocialAssistance;
+use App\Models\SocialAssistanceRecipient;
 use App\Models\User;
 use Database\Factories\FamilyMemberFactory;
 use Database\Factories\HeadOfFamilyFactory;
@@ -30,6 +33,18 @@ class DatabaseSeeder extends Seeder
         });
 
         SocialAssistanceFactory::new()->count(50)->create();
+
+        $socialAssistances = SocialAssistance::all();
+        $headOfFamilies = HeadOfFamily::all();
+
+        foreach ($socialAssistances as $socialAssistance) {
+            foreach ($headOfFamilies as $headOfFamily) {
+                SocialAssistanceRecipient::factory()->create([
+                    'social_assistance_id' => $socialAssistance->id,
+                    'head_of_family_id' => $headOfFamily->id
+                ]);
+            }
+        }
 
         //User::factory()->create([
         //    'name' => 'Test User',
