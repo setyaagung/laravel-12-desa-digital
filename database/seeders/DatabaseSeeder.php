@@ -7,6 +7,7 @@ use App\Models\HeadOfFamily;
 use App\Models\SocialAssistance;
 use App\Models\SocialAssistanceRecipient;
 use App\Models\User;
+use Database\Factories\EventFactory;
 use Database\Factories\FamilyMemberFactory;
 use Database\Factories\HeadOfFamilyFactory;
 use Database\Factories\SocialAssistanceFactory;
@@ -45,6 +46,8 @@ class DatabaseSeeder extends Seeder
                 ]);
             }
         }
+
+        EventFactory::new()->count(50)->create();
 
         //User::factory()->create([
         //    'name' => 'Test User',
