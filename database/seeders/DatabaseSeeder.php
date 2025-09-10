@@ -34,8 +34,11 @@ class DatabaseSeeder extends Seeder
             ]);
         });
 
+
+        //social assistance
         SocialAssistanceFactory::new()->count(50)->create();
 
+        //social assistance recipient
         $socialAssistances = SocialAssistance::all();
         $headOfFamilies = HeadOfFamily::all();
 
@@ -48,7 +51,9 @@ class DatabaseSeeder extends Seeder
             }
         }
 
+        //event
         EventFactory::new()->count(50)->create();
+        //event participant
         $events = Event::all();
 
         foreach ($events as $event) {
