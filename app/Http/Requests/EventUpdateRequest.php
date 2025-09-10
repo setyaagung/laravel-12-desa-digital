@@ -31,4 +31,17 @@ class EventUpdateRequest extends FormRequest
             'is_available' => ['required', 'boolean']
         ];
     }
+
+    public function attributes()
+    {
+        return [
+            'thumbnail' => 'Thumbnail',
+            'name' => 'Name',
+            'description' => 'Description',
+            'date' => 'Date',
+            'time' => 'Time',
+            'price' => 'Price',
+            'is_available' => 'Is Available'
+        ];
+    }
 }

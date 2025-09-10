@@ -2,7 +2,8 @@
 
 namespace Database\Seeders;
 
-use App\Models\FamilyMember;
+use App\Models\Event;
+use App\Models\EventParticipant;
 use App\Models\HeadOfFamily;
 use App\Models\SocialAssistance;
 use App\Models\SocialAssistanceRecipient;
@@ -48,7 +49,16 @@ class DatabaseSeeder extends Seeder
         }
 
         EventFactory::new()->count(50)->create();
+        $events = Event::all();
 
+        foreach ($events as $event) {
+            foreach ($headOfFamilies as $headOfFamily) {
+                EventParticipant::factory()->create([
+                    'head_of_family_id' => $headOfFamily->id,
+                    'event_id' => $event->id
+                ]);
+            }
+        }
         //User::factory()->create([
         //    'name' => 'Test User',
         //    'email' => 'test@example.com',
